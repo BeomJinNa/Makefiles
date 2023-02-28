@@ -1,0 +1,32 @@
+CC		= cc
+AR		= ar
+ARFLAGS	= crs
+CFLAGS	= -Wall -Wextra -Werror
+
+NAME 	= lib~~~.a
+
+SRCS	=
+
+OBJS = $(SRCS:.c=.o)
+
+.PHONY: all
+all : $(NAME)
+
+$(NAME) : $(OBJS)
+	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
+
+%.o : %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+.PHONY: clean
+clean :
+	rm -f $(OBJS)
+
+.PHONY: fclean
+fclean :
+	rm -f $(NAME) $(OBJS)
+
+.PHONY: re
+re :
+	make fclean
+	make all
