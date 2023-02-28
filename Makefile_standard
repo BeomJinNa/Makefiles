@@ -1,0 +1,28 @@
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror
+SRCS = $(wildcard *.c)
+OBJS = $(SRCS:.c=.o)
+NAME = put the program name in here
+
+.PHONY: all
+all :
+	make $(NAME)
+
+$(NAME) : $(OBJS)
+	ar crs $(NAME) $(OBJS)
+
+%.o : %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+.PHONY: clean
+clean :
+	rm -f $(OBJS)
+
+.PHONY: fclean
+fclean :
+	rm -f $(NAME) $(OBJS)
+
+.PHONY: re
+re :
+	make fclean
+	make all
