@@ -28,8 +28,8 @@ SRCS	= #source files(*.c)
 
 B_SRCS	= #bonus source files(*.c)
 
-OBJS	= $(S_SRCS:.c=.o)
-B_OBJS	= $(SB_SRCS:.c=.o)
+OBJS	= $(SRCS:.c=.o)
+B_OBJS	= $(B_SRCS:.c=.o)
 
 
 
